@@ -157,52 +157,53 @@ const Hero = () => {
           {/* Right - Phone Mockups */}
           <div className="relative flex items-center justify-center overflow-hidden">
             {/* Container pour les téléphones */}
-            <div className="relative w-full flex items-center justify-center max-w-md lg:max-w-none mx-auto">
+            <div className="relative w-full flex flex-col items-center justify-center max-w-md lg:max-w-none mx-auto">
 
-              {/* Badge Trouver de l'aide - hidden on mobile, visible on lg+ */}
+              {/* Badge Trouver de l'aide - en haut */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="hidden lg:block absolute top-0 left-0 z-30"
+                className="mb-4"
               >
                 <motion.div
-                  className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-full text-xs lg:text-sm 2xl:text-base font-medium shadow-lg flex items-center gap-2"
+                  className="bg-white text-gray-800 px-4 py-2 rounded-full text-xs sm:text-sm font-medium shadow-lg flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <svg className="w-3 h-3 lg:w-4 lg:h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-gray-800">Trouver de l'aide <span className="text-teal-500 font-semibold">simplement</span></span>
                 </motion.div>
               </motion.div>
 
-              {/* Badge Proposer une mission - hidden on mobile, visible on lg+ */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                className="hidden lg:block absolute top-16 -right-4 z-30"
-              >
+              {/* Phones + Badge Proposer une mission */}
+              <div className="relative">
+                {/* Badge Proposer une mission - positionné à droite des téléphones */}
                 <motion.div
-                  className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-2xl text-xs lg:text-sm 2xl:text-base font-medium shadow-lg"
-                  whileHover={{ scale: 1.05 }}
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.2, duration: 0.5 }}
+                  className="absolute -top-2 -right-2 sm:top-4 sm:-right-4 lg:top-8 lg:-right-8 z-30"
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="text-base lg:text-lg">📢</span>
-                    <span className="text-gray-800">Proposer une <span className="text-emerald-500 font-semibold">mission</span></span>
-                  </div>
-                  <div className="text-[10px] lg:text-xs mt-1 text-gray-500">Discuter en toute sécurité</div>
+                  <motion.div
+                    className="bg-white text-gray-800 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl text-[10px] sm:text-xs lg:text-sm font-medium shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                  >
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      <span className="text-sm sm:text-base lg:text-lg">📢</span>
+                      <span className="text-gray-800">Proposer une <span className="text-emerald-500 font-semibold">mission</span></span>
+                    </div>
+                    <div className="text-[8px] sm:text-[10px] lg:text-xs mt-0.5 sm:mt-1 text-gray-500">Discuter en toute sécurité</div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
 
-              {/* Phones Container - 2 téléphones côte à côte */}
-              <div className="flex flex-col items-center w-full">
-                <div className="flex items-end justify-center pt-8 sm:pt-16 scale-[0.7] sm:scale-[0.85] lg:scale-100 origin-top">
+                {/* Phones Container - 2 téléphones côte à côte */}
+                <div className="flex items-end justify-center scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
 
                 {/* Phone 1 - Calendar (gauche, devant) */}
                 <motion.div
@@ -343,31 +344,31 @@ const Hero = () => {
                   </div>
                 </motion.div>
                 </div>
-
-                {/* Bulle en dessous des téléphones */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.6 }}
-                  className="mt-4 sm:mt-6"
-                >
-                  <div className="bg-white rounded-2xl px-4 py-3 sm:px-6 sm:py-4 2xl:px-8 2xl:py-5 shadow-lg flex items-center gap-2 sm:gap-3 2xl:gap-4">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 2xl:w-14 2xl:h-14 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 2xl:w-7 2xl:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-gray-800 font-medium text-xs sm:text-sm 2xl:text-lg">
-                        Aidez quand vous voulez.
-                      </p>
-                      <p className="text-emerald-500 font-bold text-xs sm:text-sm 2xl:text-lg">
-                        0 contrainte, 100% liberté
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
               </div>
+
+              {/* Bulle en dessous des téléphones */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                className="mt-4 lg:mt-6"
+              >
+                <div className="bg-white rounded-2xl px-4 py-3 sm:px-6 sm:py-4 shadow-lg flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-gray-800 font-medium text-xs sm:text-sm">
+                      Aidez quand vous voulez.
+                    </p>
+                    <p className="text-emerald-500 font-bold text-xs sm:text-sm">
+                      0 contrainte, 100% liberté
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
