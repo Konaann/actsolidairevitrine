@@ -164,7 +164,7 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="hidden sm:block absolute -top-4 left-4 lg:left-8 z-30"
+                className="hidden lg:block absolute top-0 left-0 z-30"
               >
                 <motion.div
                   className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-full text-xs lg:text-sm 2xl:text-base font-medium shadow-lg flex items-center gap-2"
@@ -179,12 +179,12 @@ const Hero = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Badge Proposer une mission - hidden on mobile, visible on sm+ */}
+              {/* Badge Proposer une mission - hidden on mobile, visible on lg+ */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
-                className="hidden sm:block absolute top-8 right-4 lg:-right-4 z-30"
+                className="hidden lg:block absolute top-16 -right-4 z-30"
               >
                 <motion.div
                   className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-2xl text-xs lg:text-sm 2xl:text-base font-medium shadow-lg"
