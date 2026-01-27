@@ -155,7 +155,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Right - Phone Mockups */}
-          <div className="relative flex items-center justify-center overflow-hidden">
+          <div className="relative flex items-center justify-center">
             {/* Container pour les téléphones */}
             <div className="relative w-full flex flex-col items-center justify-center max-w-md lg:max-w-none mx-auto">
 
@@ -186,7 +186,7 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2, duration: 0.5 }}
-                  className="absolute -top-2 -right-2 sm:top-4 sm:-right-4 lg:top-8 lg:-right-8 z-30"
+                  className="absolute top-0 right-0 lg:top-4 lg:-right-4 z-30"
                 >
                   <motion.div
                     className="bg-white text-gray-800 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl text-[10px] sm:text-xs lg:text-sm font-medium shadow-lg"
