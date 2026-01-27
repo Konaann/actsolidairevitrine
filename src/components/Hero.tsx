@@ -10,7 +10,6 @@ const Hero = () => {
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,7 +29,7 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
       },
     },
   };

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -61,7 +61,7 @@ function PageLayout({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AnimatePresence mode="wait">
         <Routes>
           {/* Page d'accueil */}
@@ -84,7 +84,7 @@ function App() {
           <Route path="/inscription-demandeur" element={<PageLayout><InscriptionDemandeur /></PageLayout>} />
         </Routes>
       </AnimatePresence>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
