@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(copy \"C:\\\\Users\\\\camil\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\upload_36bcb48b-78b5-4cd5-97ff-c5bd8ff0d8fe\\\\image.png\" \"c:\\\\Users\\\\camil\\\\Desktop\\\\Code\\\\actsolidairevitrine\\\\public\\\\logo.png\")",
+      "Bash(cmd /c copy:*)",
+      "Bash(cmd /c dir \"c:\\\\Users\\\\camil\\\\Desktop\\\\Code\\\\actsolidairevitrine\\\\public\\\\logo.png\")",
+      "Bash(powershell:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arc bleu foncé en haut à gauche -->
+  <path d="M20 50 A30 30 0 0 1 50 20" fill="none" stroke="#1e3a5f" stroke-width="8" stroke-linecap="round" />
+  <!-- Arc bleu clair en bas à droite -->
+  <path d="M80 50 A30 30 0 0 1 50 80" fill="none" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
+  <!-- Arc vert en haut à droite -->
+  <path d="M50 20 A30 30 0 0 1 80 50" fill="none" stroke="#22c55e" stroke-width="6" stroke-linecap="round" />
+  <!-- Main verte (en haut) -->
+  <g fill="#4ade80" stroke="#166534" stroke-width="1">
+    <path d="M75 30 Q70 25 60 28 L45 38 Q40 42 38 48 L36 52 Q35 55 38 56 L42 54 Q44 52 46 48 L48 44 Q50 40 55 38 L70 32 Q74 30 75 30 Z" />
+    <path d="M38 56 L32 62 Q30 65 33 66 L38 62 Q40 58 42 54" />
+    <path d="M42 54 L38 60 Q36 64 39 65 L44 58 Q45 55 46 52" />
+    <path d="M46 52 L44 58 Q43 62 46 62 L50 56 Q50 52 50 50" />
+  </g>
+  <!-- Main bleue (en bas) -->
+  <g fill="#3b82f6" stroke="#1e40af" stroke-width="1">
+    <path d="M25 70 Q30 75 40 72 L55 62 Q60 58 62 52 L64 48 Q65 45 62 44 L58 46 Q56 48 54 52 L52 56 Q50 60 45 62 L30 68 Q26 70 25 70 Z" />
+    <path d="M62 44 L68 38 Q70 35 67 34 L62 38 Q60 42 58 46" />
+    <path d="M58 46 L62 40 Q64 36 61 35 L56 42 Q55 45 54 48" />
+    <path d="M54 48 L56 42 Q57 38 54 38 L50 44 Q50 48 50 50" />
+  </g>
+</svg>
