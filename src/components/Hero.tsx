@@ -155,54 +155,54 @@ const Hero = () => {
           </motion.div>
 
           {/* Right - Phone Mockups */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center overflow-hidden">
             {/* Container pour les téléphones */}
-            <div className="relative w-full flex items-center justify-center">
+            <div className="relative w-full flex items-center justify-center max-w-md lg:max-w-none mx-auto">
 
-              {/* Badge Trouver de l'aide - en haut à gauche */}
+              {/* Badge Trouver de l'aide - hidden on mobile, visible on lg+ */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="absolute -top-4 left-0 lg:left-8 z-30"
+                className="hidden sm:block absolute -top-4 left-4 lg:left-8 z-30"
               >
                 <motion.div
-                  className="bg-white text-gray-800 px-4 py-2 2xl:px-6 2xl:py-3 rounded-full text-sm 2xl:text-base font-medium shadow-lg flex items-center gap-2"
+                  className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-full text-xs lg:text-sm 2xl:text-base font-medium shadow-lg flex items-center gap-2"
                   whileHover={{ scale: 1.05 }}
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <svg className="w-4 h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3 h-3 lg:w-4 lg:h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-gray-800">Trouver de l'aide <span className="text-teal-500 font-semibold">simplement</span></span>
                 </motion.div>
               </motion.div>
 
-              {/* Badge Proposer une mission - en haut à droite */}
+              {/* Badge Proposer une mission - hidden on mobile, visible on sm+ */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
-                className="absolute top-8 right-0 lg:-right-4 z-30"
+                className="hidden sm:block absolute top-8 right-4 lg:-right-4 z-30"
               >
                 <motion.div
-                  className="bg-white text-gray-800 px-4 py-2 2xl:px-6 2xl:py-3 rounded-2xl text-sm 2xl:text-base font-medium shadow-lg"
+                  className="bg-white text-gray-800 px-3 py-1.5 lg:px-4 lg:py-2 2xl:px-6 2xl:py-3 rounded-2xl text-xs lg:text-sm 2xl:text-base font-medium shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">📢</span>
+                    <span className="text-base lg:text-lg">📢</span>
                     <span className="text-gray-800">Proposer une <span className="text-emerald-500 font-semibold">mission</span></span>
                   </div>
-                  <div className="text-xs mt-1 text-gray-500">Discuter en toute sécurité</div>
+                  <div className="text-[10px] lg:text-xs mt-1 text-gray-500">Discuter en toute sécurité</div>
                 </motion.div>
               </motion.div>
 
               {/* Phones Container - 2 téléphones côte à côte */}
-              <div className="flex flex-col items-center">
-                <div className="flex items-end justify-center pt-16">
+              <div className="flex flex-col items-center w-full">
+                <div className="flex items-end justify-center pt-8 sm:pt-16 scale-[0.7] sm:scale-[0.85] lg:scale-100 origin-top">
 
                 {/* Phone 1 - Calendar (gauche, devant) */}
                 <motion.div
@@ -210,41 +210,41 @@ const Hero = () => {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="relative z-20 -mr-8"
+                  className="relative z-20 -mr-6 sm:-mr-8"
                 >
-                  <div className="phone-frame w-[240px] sm:w-[280px] lg:w-[300px] xl:w-[320px] 2xl:w-[380px] transform -rotate-6 hover:-rotate-3 transition-transform duration-500">
-                    <div className="phone-screen p-4">
+                  <div className="phone-frame w-[200px] sm:w-[240px] lg:w-[280px] xl:w-[300px] 2xl:w-[360px] transform -rotate-6 hover:-rotate-3 transition-transform duration-500">
+                    <div className="phone-screen p-3 sm:p-4">
                       {/* Phone Header */}
-                      <div className="flex justify-between items-center mb-4">
-                        <span className="text-xs text-gray-400">9:41</span>
+                      <div className="flex justify-between items-center mb-3 sm:mb-4">
+                        <span className="text-[10px] sm:text-xs text-gray-400">9:41</span>
                         <div className="flex gap-1">
-                          <div className="w-4 h-2 bg-gray-800 rounded-sm" />
+                          <div className="w-3 h-1.5 sm:w-4 sm:h-2 bg-gray-800 rounded-sm" />
                         </div>
                       </div>
 
                       {/* Calendar Header */}
-                      <div className="flex items-center justify-between mb-4">
-                        <button className="text-gray-400">&lt;</button>
-                        <h3 className="font-semibold text-gray-800 text-base">Calendrier</h3>
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-emerald-400 flex items-center justify-center">
-                          <span className="text-white text-xs">👤</span>
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <button className="text-gray-400 text-sm">&lt;</button>
+                        <h3 className="font-semibold text-gray-800 text-sm sm:text-base">Calendrier</h3>
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-cyan-400 to-emerald-400 flex items-center justify-center">
+                          <span className="text-white text-[10px] sm:text-xs">👤</span>
                         </div>
                       </div>
 
-                      <div className="text-center mb-3">
-                        <span className="font-medium text-gray-800 text-sm">Janvier 2025</span>
-                        <button className="ml-2 text-gray-400">&gt;</button>
+                      <div className="text-center mb-2 sm:mb-3">
+                        <span className="font-medium text-gray-800 text-xs sm:text-sm">Janvier 2025</span>
+                        <button className="ml-2 text-gray-400 text-sm">&gt;</button>
                       </div>
 
                       {/* Calendar Grid */}
-                      <div className="grid grid-cols-7 gap-1 text-xs mb-4">
+                      <div className="grid grid-cols-7 gap-0.5 sm:gap-1 text-[10px] sm:text-xs mb-3 sm:mb-4">
                         {['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'].map((day) => (
-                          <div key={day} className="text-center text-gray-400 py-1">{day}</div>
+                          <div key={day} className="text-center text-gray-400 py-0.5 sm:py-1">{day}</div>
                         ))}
                         {Array.from({ length: 30 }, (_, i) => i + 1).map((day) => (
                           <div
                             key={day}
-                            className={`text-center py-1 rounded-full ${
+                            className={`text-center py-0.5 sm:py-1 rounded-full ${
                               day === 11
                                 ? 'bg-emerald-500 text-white font-bold'
                                 : 'text-gray-600'
@@ -256,40 +256,40 @@ const Hero = () => {
                       </div>
 
                       {/* Mission List */}
-                      <div className="space-y-2">
-                        <div className="bg-gray-50 rounded-lg p-2 border-l-4 border-amber-400">
-                          <div className="text-xs text-gray-500">11 Janvier, 2025</div>
-                          <div className="flex items-center gap-2 mt-1">
-                            <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
-                              <span className="text-xs">🎨</span>
+                      <div className="space-y-1.5 sm:space-y-2">
+                        <div className="bg-gray-50 rounded-lg p-1.5 sm:p-2 border-l-4 border-amber-400">
+                          <div className="text-[10px] sm:text-xs text-gray-500">11 Janvier, 2025</div>
+                          <div className="flex items-center gap-1.5 sm:gap-2 mt-0.5 sm:mt-1">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-purple-100 rounded-full flex items-center justify-center">
+                              <span className="text-[10px] sm:text-xs">🎨</span>
                             </div>
                             <div>
-                              <div className="text-xs font-medium text-gray-800">Peinture avec Elise</div>
-                              <div className="text-[10px] text-gray-400">de 9h à 10h30</div>
+                              <div className="text-[10px] sm:text-xs font-medium text-gray-800">Peinture avec Elise</div>
+                              <div className="text-[8px] sm:text-[10px] text-gray-400">de 9h à 10h30</div>
                             </div>
                           </div>
                         </div>
 
-                        <div className="bg-gray-50 rounded-lg p-2 border-l-4 border-blue-400">
-                          <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
-                              <span className="text-xs">💻</span>
+                        <div className="bg-gray-50 rounded-lg p-1.5 sm:p-2 border-l-4 border-blue-400">
+                          <div className="flex items-center gap-1.5 sm:gap-2">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                              <span className="text-[10px] sm:text-xs">💻</span>
                             </div>
                             <div>
-                              <div className="text-xs font-medium text-gray-800">Aide informatique</div>
-                              <div className="text-[10px] text-gray-400">de 13h à 14h</div>
+                              <div className="text-[10px] sm:text-xs font-medium text-gray-800">Aide informatique</div>
+                              <div className="text-[8px] sm:text-[10px] text-gray-400">de 13h à 14h</div>
                             </div>
                           </div>
                         </div>
 
-                        <div className="bg-gray-50 rounded-lg p-2 border-l-4 border-amber-500">
-                          <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center">
-                              <span className="text-xs">📁</span>
+                        <div className="bg-gray-50 rounded-lg p-1.5 sm:p-2 border-l-4 border-amber-500">
+                          <div className="flex items-center gap-1.5 sm:gap-2">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 bg-amber-100 rounded-full flex items-center justify-center">
+                              <span className="text-[10px] sm:text-xs">📁</span>
                             </div>
                             <div>
-                              <div className="text-xs font-medium text-gray-800">Triage d'archives à la mairie</div>
-                              <div className="text-[10px] text-gray-400">de 14h30 à 15h30</div>
+                              <div className="text-[10px] sm:text-xs font-medium text-gray-800">Triage d'archives</div>
+                              <div className="text-[8px] sm:text-[10px] text-gray-400">de 14h30 à 15h30</div>
                             </div>
                           </div>
                         </div>
@@ -304,38 +304,38 @@ const Hero = () => {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="relative z-10 -ml-8"
+                  className="relative z-10 -ml-6 sm:-ml-8"
                 >
-                  <div className="phone-frame w-[220px] sm:w-[260px] lg:w-[280px] xl:w-[300px] 2xl:w-[360px] transform rotate-6 hover:rotate-3 transition-transform duration-500">
-                    <div className="phone-screen p-4">
+                  <div className="phone-frame w-[180px] sm:w-[220px] lg:w-[260px] xl:w-[280px] 2xl:w-[340px] transform rotate-6 hover:rotate-3 transition-transform duration-500">
+                    <div className="phone-screen p-3 sm:p-4">
                       {/* Phone Header */}
-                      <div className="flex justify-between items-center mb-6">
-                        <span className="text-xs text-gray-400">9:41</span>
+                      <div className="flex justify-between items-center mb-4 sm:mb-6">
+                        <span className="text-[10px] sm:text-xs text-gray-400">9:41</span>
                         <div className="flex gap-1">
-                          <div className="w-4 h-2 bg-gray-800 rounded-sm" />
+                          <div className="w-3 h-1.5 sm:w-4 sm:h-2 bg-gray-800 rounded-sm" />
                         </div>
                       </div>
 
                       {/* Logo */}
-                      <div className="flex justify-center mb-6">
-                        <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-20 h-20 object-contain" />
+                      <div className="flex justify-center mb-4 sm:mb-6">
+                        <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-14 h-14 sm:w-20 sm:h-20 object-contain" />
                       </div>
 
-                      <h3 className="text-center font-bold text-gray-800 text-xl mb-6">Connexion</h3>
+                      <h3 className="text-center font-bold text-gray-800 text-lg sm:text-xl mb-4 sm:mb-6">Connexion</h3>
 
-                      <div className="space-y-4">
-                        <div className="bg-gray-100 rounded-xl p-3">
-                          <div className="text-[10px] text-gray-400 mb-1">Email</div>
-                          <div className="text-sm text-gray-600">user@email.com</div>
+                      <div className="space-y-3 sm:space-y-4">
+                        <div className="bg-gray-100 rounded-xl p-2 sm:p-3">
+                          <div className="text-[8px] sm:text-[10px] text-gray-400 mb-0.5 sm:mb-1">Email</div>
+                          <div className="text-xs sm:text-sm text-gray-600">user@email.com</div>
                         </div>
-                        <div className="bg-gray-100 rounded-xl p-3">
-                          <div className="text-[10px] text-gray-400 mb-1">Mot de passe</div>
-                          <div className="text-sm text-gray-600">••••••••</div>
+                        <div className="bg-gray-100 rounded-xl p-2 sm:p-3">
+                          <div className="text-[8px] sm:text-[10px] text-gray-400 mb-0.5 sm:mb-1">Mot de passe</div>
+                          <div className="text-xs sm:text-sm text-gray-600">••••••••</div>
                         </div>
-                        <div className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-white text-center py-3 rounded-xl text-sm font-semibold shadow-md">
+                        <div className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-white text-center py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold shadow-md">
                           Se connecter
                         </div>
-                        <p className="text-center text-xs text-gray-400">
+                        <p className="text-center text-[10px] sm:text-xs text-gray-400">
                           Pas encore de compte ? <span className="text-cyan-500">S'inscrire</span>
                         </p>
                       </div>
@@ -349,19 +349,19 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1, duration: 0.6 }}
-                  className="mt-6"
+                  className="mt-4 sm:mt-6"
                 >
-                  <div className="bg-white rounded-2xl px-6 py-4 2xl:px-8 2xl:py-5 shadow-lg flex items-center gap-3 2xl:gap-4">
-                    <div className="w-10 h-10 2xl:w-14 2xl:h-14 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center">
-                      <svg className="w-5 h-5 2xl:w-7 2xl:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="bg-white rounded-2xl px-4 py-3 sm:px-6 sm:py-4 2xl:px-8 2xl:py-5 shadow-lg flex items-center gap-2 sm:gap-3 2xl:gap-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 2xl:w-14 2xl:h-14 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 2xl:w-7 2xl:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-gray-800 font-medium text-sm 2xl:text-lg">
+                      <p className="text-gray-800 font-medium text-xs sm:text-sm 2xl:text-lg">
                         Aidez quand vous voulez.
                       </p>
-                      <p className="text-emerald-500 font-bold text-sm 2xl:text-lg">
+                      <p className="text-emerald-500 font-bold text-xs sm:text-sm 2xl:text-lg">
                         0 contrainte, 100% liberté
                       </p>
                     </div>
