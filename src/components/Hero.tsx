@@ -318,7 +318,7 @@ const Hero = () => {
 
                       {/* Logo */}
                       <div className="flex justify-center mb-6">
-                        <img src="/logo.png" alt="Act'Solidaires" className="w-20 h-20 object-contain" />
+                        <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-20 h-20 object-contain" />
                       </div>
 
                       <h3 className="text-center font-bold text-gray-800 text-xl mb-6">Connexion</h3>

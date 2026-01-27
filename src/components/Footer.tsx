@@ -63,7 +63,7 @@ const Footer = () => {
               className="flex items-center gap-3 mb-4"
               whileHover={{ scale: 1.05 }}
             >
-              <img src="/logo.png" alt="Act'Solidaires" className="w-10 h-10 object-contain" />
+              <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-10 h-10 object-contain" />
               <span className="text-xl font-bold">Act'Solidaires</span>
             </motion.div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">

@@ -88,7 +88,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
             >
               {/* Logo image */}
-              <img src="/logo.png" alt="Act'Solidaires" className="w-12 h-12 object-contain" />
+              <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-12 h-12 object-contain" />
               <span className="text-xl font-bold text-gray-800 hidden sm:block">
                 Act'Solidaires
               </span>
