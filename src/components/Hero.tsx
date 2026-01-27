@@ -203,7 +203,7 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Phones Container - 2 téléphones côte à côte */}
-                <div className="flex items-end justify-center scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
+                <div className="flex items-end justify-center scale-[0.75] sm:scale-[0.85] lg:scale-100 origin-center">
 
                 {/* Phone 1 - Calendar (gauche, devant) */}
                 <motion.div
@@ -351,7 +351,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="mt-4 lg:mt-6"
+                className="-mt-16 sm:-mt-8 lg:mt-6"
               >
                 <div className="bg-white rounded-2xl px-4 py-3 sm:px-6 sm:py-4 shadow-lg flex items-center gap-2 sm:gap-3">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
