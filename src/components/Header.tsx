@@ -89,7 +89,7 @@ const Header = () => {
             >
               {/* Logo image */}
               <img src={import.meta.env.BASE_URL + "logo.png"} alt="Act'Solidaires" className="w-12 h-12 object-contain" />
-              <span className="text-xl font-bold text-gray-800 hidden sm:block">
+              <span className="text-base sm:text-xl font-bold text-gray-800">
                 Act'Solidaires
               </span>
             </motion.div>
