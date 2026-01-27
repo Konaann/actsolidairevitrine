@@ -70,7 +70,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 flex-1 flex items-center py-8">
+      <div className="relative max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 flex-1 flex items-center py-8 pb-4 lg:pb-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 2xl:gap-24 items-center w-full">
           {/* Left Content */}
           <motion.div
@@ -351,7 +351,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="-mt-16 sm:-mt-8 lg:mt-6"
+                className="-mt-16 sm:-mt-8 lg:mt-4"
               >
                 <div className="bg-white rounded-2xl px-4 py-3 sm:px-6 sm:py-4 shadow-lg flex items-center gap-2 sm:gap-3">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-cyan-400 to-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
