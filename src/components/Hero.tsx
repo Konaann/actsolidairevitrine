@@ -97,7 +97,7 @@ const Hero = () => {
 
               <motion.p
                 variants={itemVariants}
-                className="text-gray-600 text-base lg:text-lg xl:text-xl 2xl:text-2xl mb-6 2xl:mb-8 leading-relaxed"
+                className="text-gray-600 text-base lg:text-lg xl:text-xl 2xl:text-2xl mb-6 2xl:mb-8 leading-relaxed text-justify"
               >
                 Une application qui permet aux jeunes d'aider les personnes âgées
                 à travers des missions simples, renforçant la solidarité et les
@@ -121,7 +121,7 @@ const Hero = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="text-sm sm:text-base font-semibold">Découvrir le prototype</span>
+                  <span className="text-sm sm:text-base font-semibold">Découvrir l'application</span>
                 </motion.a>
               </motion.div>
 
