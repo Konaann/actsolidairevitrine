@@ -16,6 +16,18 @@ import InscriptionDemandeur from './pages/InscriptionDemandeur';
 import MissionsListe from './pages/MissionsListe';
 import MesGains from './pages/MesGains';
 
+// Services Pages
+import Services from './pages/Services';
+import Aide from './pages/services/Aide';
+import Courses from './pages/services/Courses';
+import Reparation from './pages/services/Reparation';
+import Devoirs from './pages/services/Devoirs';
+import Peinture from './pages/services/Peinture';
+import Nettoyage from './pages/services/Nettoyage';
+import Informatique from './pages/services/Informatique';
+import Mairie from './pages/services/Mairie';
+import Activite from './pages/services/Activite';
+
 // Composant pour la page d'accueil
 function HomePage() {
   return (
@@ -82,6 +94,18 @@ function App() {
 
           {/* Pages INFOS - Devenir Demandeur */}
           <Route path="/inscription-demandeur" element={<PageLayout><InscriptionDemandeur /></PageLayout>} />
+
+          {/* Pages Services */}
+          <Route path="/services" element={<PageLayout><Services /></PageLayout>} />
+          <Route path="/services/aide" element={<PageLayout><Aide /></PageLayout>} />
+          <Route path="/services/courses" element={<PageLayout><Courses /></PageLayout>} />
+          <Route path="/services/reparation" element={<PageLayout><Reparation /></PageLayout>} />
+          <Route path="/services/devoirs" element={<PageLayout><Devoirs /></PageLayout>} />
+          <Route path="/services/peinture" element={<PageLayout><Peinture /></PageLayout>} />
+          <Route path="/services/nettoyage" element={<PageLayout><Nettoyage /></PageLayout>} />
+          <Route path="/services/informatique" element={<PageLayout><Informatique /></PageLayout>} />
+          <Route path="/services/mairie" element={<PageLayout><Mairie /></PageLayout>} />
+          <Route path="/services/activite" element={<PageLayout><Activite /></PageLayout>} />
         </Routes>
       </AnimatePresence>
     </HashRouter>
