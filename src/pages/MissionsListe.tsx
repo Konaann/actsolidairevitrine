@@ -70,19 +70,30 @@ const MissionsListe = () => {
     : missions;
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+    <div className="min-h-screen bg-gray-50 pt-20">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-cyan-500 to-teal-500 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-white"
+          >
+            <span className="text-6xl mb-4 block">📋</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Missions disponibles</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+              Trouvez une mission près de chez vous et commencez à aider
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-12 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-                Missions disponibles
-              </h1>
-              <p className="text-gray-600 mt-2">{filteredMissions.length} missions près de chez vous</p>
+              <p className="text-gray-600">{filteredMissions.length} missions près de chez vous</p>
             </div>
 
             {/* View Toggle */}
@@ -191,8 +202,8 @@ const MissionsListe = () => {
               </div>
             </div>
           )}
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 };

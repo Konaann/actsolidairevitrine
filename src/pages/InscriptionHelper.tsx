@@ -55,20 +55,27 @@ const InscriptionHelper = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">
-            Devenir Helper
-          </h1>
-          <p className="text-gray-600 text-center mb-8">
-            Rejoignez la communauté et aidez ceux qui en ont besoin
-          </p>
+    <div className="min-h-screen bg-gray-50 pt-20">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-green-500 to-emerald-500 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-white"
+          >
+            <span className="text-6xl mb-4 block">🦸</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Devenir Helper</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+              Rejoignez la communauté et aidez ceux qui en ont besoin
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      <section className="py-12 pb-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Progress Steps */}
           <div className="flex items-center justify-center gap-4 mb-8">
             {[1, 2, 3].map((s) => (
@@ -275,8 +282,8 @@ const InscriptionHelper = () => {
               )}
             </div>
           </form>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 };

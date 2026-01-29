@@ -40,20 +40,27 @@ const FaqDemandeur = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 text-center">
-            FAQ Demandeur
-          </h1>
-          <p className="text-gray-600 text-center mb-12">
-            Trouvez rapidement les réponses à vos questions
-          </p>
+    <div className="min-h-screen bg-gray-50 pt-20">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-purple-500 to-indigo-500 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-white"
+          >
+            <span className="text-6xl mb-4 block">❓</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">FAQ Demandeur</h1>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+              Trouvez rapidement les réponses à vos questions
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      <section className="py-12 pb-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
@@ -113,8 +120,8 @@ const FaqDemandeur = () => {
               Contactez-nous
             </a>
           </motion.div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 };
