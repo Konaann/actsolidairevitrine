@@ -34,6 +34,12 @@ import CGV from './pages/apropos/CGV';
 import MentionsLegales from './pages/apropos/MentionsLegales';
 import Fonctionnalites from './pages/apropos/Fonctionnalites';
 
+// Blog Pages
+import Blog from './pages/blog/Blog';
+import Guides from './pages/blog/Guides';
+import Temoignages from './pages/blog/Temoignages';
+import Evenements from './pages/blog/Evenements';
+
 // Composant pour la page d'accueil
 function HomePage() {
   return (
@@ -118,6 +124,12 @@ function App() {
           <Route path="/apropos/cgv" element={<PageLayout><CGV /></PageLayout>} />
           <Route path="/apropos/mentions-legales" element={<PageLayout><MentionsLegales /></PageLayout>} />
           <Route path="/apropos/fonctionnalites" element={<PageLayout><Fonctionnalites /></PageLayout>} />
+
+          {/* Pages Blog */}
+          <Route path="/blog" element={<PageLayout><Blog /></PageLayout>} />
+          <Route path="/blog/guides" element={<PageLayout><Guides /></PageLayout>} />
+          <Route path="/blog/temoignages" element={<PageLayout><Temoignages /></PageLayout>} />
+          <Route path="/blog/evenements" element={<PageLayout><Evenements /></PageLayout>} />
         </Routes>
       </AnimatePresence>
     </HashRouter>

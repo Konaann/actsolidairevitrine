@@ -7,8 +7,16 @@ const Header = () => {
   const [isInfosOpen, setIsInfosOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isAproposOpen, setIsAproposOpen] = useState(false);
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
 
-  const navItems = ['BLOG', 'RESSOURCES'];
+  const navItems = ['RESSOURCES'];
+
+  const blogMenu = [
+    { icon: '📰', title: 'Blog', path: '/blog' },
+    { icon: '📖', title: 'Guides', path: '/blog/guides' },
+    { icon: '💬', title: 'Témoignages', path: '/blog/temoignages' },
+    { icon: '🎉', title: 'Événements & Partenariats', path: '/blog/evenements' },
+  ];
 
   const aproposMenu = [
     { icon: '🎯', title: 'Mission et impact', path: '/apropos/mission' },
@@ -321,6 +329,55 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
+            {/* BLOG Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsBlogOpen(true)}
+              onMouseLeave={() => setIsBlogOpen(false)}
+            >
+              <motion.button
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300 flex items-center gap-1"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                BLOG
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${isBlogOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </motion.button>
+
+              <AnimatePresence>
+                {isBlogOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[260px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-4"
+                  >
+                    <div className="grid grid-cols-1 gap-1">
+                      {blogMenu.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                          <span className="text-lg">{item.icon}</span>
+                          <span className="text-sm text-gray-700 hover:text-cyan-600">{item.title}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {navItems.map((item, index) => (
               <motion.a
                 key={item}
@@ -543,13 +600,55 @@ const Header = () => {
                   </AnimatePresence>
                 </motion.div>
 
+                {/* BLOG Section Mobile */}
+                <motion.div
+                  variants={itemVariants}
+                  custom={3}
+                  initial="closed"
+                  animate="open"
+                >
+                  <button
+                    onClick={() => setIsBlogOpen(!isBlogOpen)}
+                    className="w-full flex items-center justify-between py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                  >
+                    BLOG
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${isBlogOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {isBlogOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden pl-4"
+                      >
+                        <div className="py-2 space-y-1">
+                          {blogMenu.map((item) => (
+                            <Link key={item.path} to={item.path} className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-600 py-1" onClick={() => setIsMenuOpen(false)}>
+                              <span>{item.icon}</span>
+                              {item.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item}
                     href={`#${item.toLowerCase().replace(' ', '-')}`}
                     className="block py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
                     variants={itemVariants}
-                    custom={index + 3}
+                    custom={index + 4}
                     initial="closed"
                     animate="open"
                     onClick={() => setIsMenuOpen(false)}
