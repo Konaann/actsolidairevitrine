@@ -12,7 +12,7 @@ const missions = [
 
 const Informatique = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-24">
+    <div className="min-h-screen bg-gray-50 pt-20">
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-600 to-gray-700 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
