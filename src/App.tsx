@@ -28,6 +28,12 @@ import Informatique from './pages/services/Informatique';
 import Mairie from './pages/services/Mairie';
 import Activite from './pages/services/Activite';
 
+// À propos Pages
+import MissionImpact from './pages/apropos/MissionImpact';
+import CGV from './pages/apropos/CGV';
+import MentionsLegales from './pages/apropos/MentionsLegales';
+import Fonctionnalites from './pages/apropos/Fonctionnalites';
+
 // Composant pour la page d'accueil
 function HomePage() {
   return (
@@ -106,6 +112,12 @@ function App() {
           <Route path="/services/informatique" element={<PageLayout><Informatique /></PageLayout>} />
           <Route path="/services/mairie" element={<PageLayout><Mairie /></PageLayout>} />
           <Route path="/services/activite" element={<PageLayout><Activite /></PageLayout>} />
+
+          {/* Pages À propos */}
+          <Route path="/apropos/mission" element={<PageLayout><MissionImpact /></PageLayout>} />
+          <Route path="/apropos/cgv" element={<PageLayout><CGV /></PageLayout>} />
+          <Route path="/apropos/mentions-legales" element={<PageLayout><MentionsLegales /></PageLayout>} />
+          <Route path="/apropos/fonctionnalites" element={<PageLayout><Fonctionnalites /></PageLayout>} />
         </Routes>
       </AnimatePresence>
     </HashRouter>
