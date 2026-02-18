@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID = 'service_zz09eht';
+const EMAILJS_TEMPLATE_ID = 'template_bjickbj';
+const EMAILJS_PUBLIC_KEY = 'SrsPheqyCygi1T-qF';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,10 +14,31 @@ const Contact = () => {
     message: '',
   });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError('');
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.nom,
+          from_email: formData.email,
+          subject: formData.sujet,
+          message: formData.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setSent(true);
+    } catch {
+      setError('Une erreur est survenue. Veuillez réessayer ou nous contacter par email directement.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const infos = [
@@ -168,13 +194,17 @@ const Contact = () => {
                       />
                     </div>
 
+                    {error && (
+                      <p className="text-red-500 text-sm text-center">{error}</p>
+                    )}
                     <motion.button
                       type="submit"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                      disabled={loading}
+                      whileHover={{ scale: loading ? 1 : 1.02 }}
+                      whileTap={{ scale: loading ? 1 : 0.98 }}
+                      className="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Envoyer le message
+                      {loading ? 'Envoi en cours...' : 'Envoyer le message'}
                     </motion.button>
                   </form>
                 )}
