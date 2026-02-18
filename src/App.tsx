@@ -6,6 +6,7 @@ import Features from './components/Features';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
+import QuickLinks from './components/QuickLinks';
 
 // Pages
 import Presentation from './pages/Presentation';
@@ -70,6 +71,9 @@ function HomePage() {
 
         {/* Features Section */}
         <Features />
+
+        {/* Quick Links */}
+        <QuickLinks />
 
         {/* Testimonials Carousel */}
         <TestimonialsCarousel />
