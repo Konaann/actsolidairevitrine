@@ -34,6 +34,15 @@ import CGV from './pages/apropos/CGV';
 import MentionsLegales from './pages/apropos/MentionsLegales';
 import Fonctionnalites from './pages/apropos/Fonctionnalites';
 
+// Download Page
+import Telecharger from './pages/Telecharger';
+
+// Contact Page
+import Contact from './pages/Contact';
+
+// Ressources Page
+import Ressources from './pages/Ressources';
+
 // Blog Pages
 import Blog from './pages/blog/Blog';
 import Guides from './pages/blog/Guides';
@@ -106,6 +115,15 @@ function App() {
 
           {/* Pages INFOS - Devenir Demandeur */}
           <Route path="/inscription-demandeur" element={<PageLayout><InscriptionDemandeur /></PageLayout>} />
+
+          {/* Page Téléchargement */}
+          <Route path="/telecharger" element={<PageLayout><Telecharger /></PageLayout>} />
+
+          {/* Page Contact */}
+          <Route path="/contact" element={<PageLayout><Contact /></PageLayout>} />
+
+          {/* Page Ressources */}
+          <Route path="/ressources" element={<PageLayout><Ressources /></PageLayout>} />
 
           {/* Pages Services */}
           <Route path="/services" element={<PageLayout><Services /></PageLayout>} />

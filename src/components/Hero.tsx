@@ -104,24 +104,34 @@ const Hero = () => {
                 liens entre générations.
               </motion.p>
 
-              {/* CTA Prototype */}
+              {/* CTA Buttons */}
               <motion.div
                 variants={itemVariants}
-                className="mb-6"
+                className="flex flex-wrap gap-4 mb-6"
               >
                 <motion.a
-                  href="https://www.figma.com/proto/9w0DEX0hp6CrjCmVBAC9XI/Untitled?node-id=0-1&t=h2Ze84q2UZyiKx5H-1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#/telecharger"
                   className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-cyan-600 hover:to-emerald-600 transition-all shadow-lg"
                   whileHover={{ scale: 1.05, boxShadow: '0 15px 40px rgba(0,0,0,0.2)' }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                   <span className="text-sm sm:text-base font-semibold">Découvrir l'application</span>
+                </motion.a>
+                <motion.a
+                  href="https://www.figma.com/proto/9w0DEX0hp6CrjCmVBAC9XI/Untitled?node-id=0-1&t=h2Ze84q2UZyiKx5H-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 border-2 border-cyan-500 text-cyan-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-cyan-50 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-sm sm:text-base font-semibold">Découvrir le prototype</span>
                 </motion.a>
               </motion.div>
 

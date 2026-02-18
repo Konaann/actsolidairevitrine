@@ -378,32 +378,31 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+            <Link to="/ressources">
+              <motion.span
                 className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (index + 1) * 0.1 }}
+                transition={{ delay: 0.5 }}
               >
-                {item}
-              </motion.a>
-            ))}
+                RESSOURCES
+              </motion.span>
+            </Link>
             {/* Contact Button */}
-            <motion.a
-              href="#contact"
-              className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              CONTACT
-            </motion.a>
+            <Link to="/contact">
+              <motion.span
+                className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 inline-block"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                CONTACT
+              </motion.span>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -642,32 +641,29 @@ const Header = () => {
                   </AnimatePresence>
                 </motion.div>
 
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                <Link to="/ressources" onClick={() => setIsMenuOpen(false)}>
+                  <motion.span
                     className="block py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
                     variants={itemVariants}
-                    custom={index + 4}
+                    custom={4}
                     initial="closed"
                     animate="open"
-                    onClick={() => setIsMenuOpen(false)}
                   >
-                    {item}
-                  </motion.a>
-                ))}
+                    RESSOURCES
+                  </motion.span>
+                </Link>
                 {/* Contact Button Mobile */}
-                <motion.a
-                  href="#contact"
-                  className="block py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-emerald-500 text-center mt-4"
-                  variants={itemVariants}
-                  custom={navItems.length + 1}
-                  initial="closed"
-                  animate="open"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  CONTACT
-                </motion.a>
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                  <motion.span
+                    className="block py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-emerald-500 text-center mt-4"
+                    variants={itemVariants}
+                    custom={navItems.length + 1}
+                    initial="closed"
+                    animate="open"
+                  >
+                    CONTACT
+                  </motion.span>
+                </Link>
               </div>
             </motion.nav>
           )}
