@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
+import TestimonialsCarousel from './components/TestimonialsCarousel';
 
 // Pages
 import Presentation from './pages/Presentation';
@@ -72,6 +73,9 @@ function HomePage() {
 
         {/* Features Section */}
         <Features />
+
+        {/* Testimonials Carousel */}
+        <TestimonialsCarousel />
       </main>
 
       {/* Footer */}
