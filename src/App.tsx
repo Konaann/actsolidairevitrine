@@ -41,9 +41,6 @@ import Telecharger from './pages/Telecharger';
 // Contact Page
 import Contact from './pages/Contact';
 
-// Ressources Page
-import Ressources from './pages/Ressources';
-
 // Blog Pages
 import Blog from './pages/blog/Blog';
 import Guides from './pages/blog/Guides';
@@ -125,9 +122,6 @@ function App() {
 
           {/* Page Contact */}
           <Route path="/contact" element={<PageLayout><Contact /></PageLayout>} />
-
-          {/* Page Ressources */}
-          <Route path="/ressources" element={<PageLayout><Ressources /></PageLayout>} />
 
           {/* Pages Services */}
           <Route path="/services" element={<PageLayout><Services /></PageLayout>} />

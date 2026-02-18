@@ -9,8 +9,6 @@ const Header = () => {
   const [isAproposOpen, setIsAproposOpen] = useState(false);
   const [isBlogOpen, setIsBlogOpen] = useState(false);
 
-  const navItems = ['RESSOURCES'];
-
   const blogMenu = [
     { icon: '📰', title: 'Blog', path: '/blog' },
     { icon: '📖', title: 'Guides', path: '/blog/guides' },
@@ -309,18 +307,6 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            <Link to="/ressources">
-              <motion.span
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                RESSOURCES
-              </motion.span>
-            </Link>
             {/* Contact Button */}
             <Link to="/contact">
               <motion.span
@@ -545,17 +531,6 @@ const Header = () => {
                   </AnimatePresence>
                 </motion.div>
 
-                <Link to="/ressources" onClick={() => setIsMenuOpen(false)}>
-                  <motion.span
-                    className="block py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-                    variants={itemVariants}
-                    custom={4}
-                    initial="closed"
-                    animate="open"
-                  >
-                    RESSOURCES
-                  </motion.span>
-                </Link>
                 {/* Contact Button Mobile */}
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   <motion.span
