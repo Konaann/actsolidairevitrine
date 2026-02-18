@@ -536,7 +536,7 @@ const Header = () => {
                   <motion.span
                     className="block py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-emerald-500 text-center mt-4"
                     variants={itemVariants}
-                    custom={navItems.length + 1}
+                    custom={5}
                     initial="closed"
                     animate="open"
                   >
