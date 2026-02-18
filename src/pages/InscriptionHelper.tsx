@@ -1,287 +1,172 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const InscriptionHelper = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    prenom: '',
-    nom: '',
-    email: '',
-    telephone: '',
-    dateNaissance: '',
-    adresse: '',
-    codePostal: '',
-    ville: '',
-    bio: '',
-    categories: [] as string[],
-    disponibilites: [] as string[],
-  });
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const categories = [
-    { id: 'courses', label: 'Courses', icon: '🛒' },
-    { id: 'accompagnement', label: 'Accompagnement', icon: '🚗' },
-    { id: 'administratif', label: 'Administratif', icon: '📋' },
-    { id: 'informatique', label: 'Informatique', icon: '💻' },
-    { id: 'menage', label: 'Ménage', icon: '🏠' },
-    { id: 'jardinage', label: 'Jardinage', icon: '🌳' },
+  const etapes = [
+    { num: '1', icon: '📲', title: 'Télécharge l\'app', desc: 'Disponible sur Android. Installe Act\'Solidaires gratuitement sur ton téléphone.' },
+    { num: '2', icon: '📝', title: 'Crée ton profil', desc: 'Renseigne tes informations, tes disponibilités et les types de missions qui t\'intéressent.' },
+    { num: '3', icon: '✅', title: 'Vérifie ton identité', desc: 'Un rapide processus de vérification pour garantir la confiance de la communauté.' },
+    { num: '4', icon: '🎯', title: 'Postule aux missions', desc: 'Parcours les annonces près de chez toi et propose ta candidature en un clic.' },
+    { num: '5', icon: '💰', title: 'Perçois tes gains', desc: 'Après chaque mission validée, tes gains sont versés directement sur ton compte.' },
   ];
 
-  const disponibilites = [
-    'Lundi matin', 'Lundi après-midi',
-    'Mardi matin', 'Mardi après-midi',
-    'Mercredi matin', 'Mercredi après-midi',
-    'Jeudi matin', 'Jeudi après-midi',
-    'Vendredi matin', 'Vendredi après-midi',
-    'Samedi matin', 'Samedi après-midi',
-    'Dimanche matin', 'Dimanche après-midi',
+  const avantages = [
+    { icon: '💸', title: 'Revenus complémentaires', desc: 'Gagne de l\'argent à ton rythme, entre tes cours ou ton travail.' },
+    { icon: '⏰', title: '100% flexible', desc: 'Tu choisis tes horaires et les missions qui te conviennent. Aucun engagement.' },
+    { icon: '❤️', title: 'Impact humain', desc: 'Aide des personnes âgées de ton quartier et crée des liens intergénérationnels uniques.' },
+    { icon: '⭐', title: 'Réputation valorisée', desc: 'Les avis et notes te permettent de construire une vraie réputation et d\'accéder à plus de missions.' },
+    { icon: '🛡️', title: 'Plateforme sécurisée', desc: 'Paiements sécurisés, profils vérifiés et support disponible en cas de besoin.' },
+    { icon: '📈', title: 'Évolution possible', desc: 'Plus tu accumules de missions et d\'avis positifs, plus tu deviens visible et sollicité.' },
   ];
 
-  const toggleCategory = (id: string) => {
-    setFormData({
-      ...formData,
-      categories: formData.categories.includes(id)
-        ? formData.categories.filter((c) => c !== id)
-        : [...formData.categories, id],
-    });
-  };
+  const typesMissions = [
+    { icon: '🛒', label: 'Courses' },
+    { icon: '💻', label: 'Informatique' },
+    { icon: '🚗', label: 'Accompagnement' },
+    { icon: '📋', label: 'Administratif' },
+    { icon: '🏠', label: 'Ménage' },
+    { icon: '🌳', label: 'Jardinage' },
+    { icon: '🎨', label: 'Peinture' },
+    { icon: '📚', label: 'Aide aux devoirs' },
+    { icon: '⚽', label: 'Activités & Sport' },
+  ];
 
-  const toggleDispo = (dispo: string) => {
-    setFormData({
-      ...formData,
-      disponibilites: formData.disponibilites.includes(dispo)
-        ? formData.disponibilites.filter((d) => d !== dispo)
-        : [...formData.disponibilites, dispo],
-    });
-  };
+  const faqs = [
+    { q: 'Quel âge faut-il avoir pour devenir helper ?', a: 'Il faut avoir au moins 16 ans pour s\'inscrire comme helper. Les mineurs doivent avoir l\'accord d\'un parent ou tuteur légal.' },
+    { q: 'Est-ce que l\'inscription est gratuite ?', a: 'Oui, l\'inscription est totalement gratuite. Act\'Solidaires ne prend aucun frais à l\'inscription. Une commission est prélevée sur chaque mission réalisée.' },
+    { q: 'Comment sont fixés les prix des missions ?', a: 'C\'est le demandeur qui fixe la rémunération lors de la création de la mission. Tu es libre d\'accepter ou de refuser selon le tarif proposé.' },
+    { q: 'Quand est-ce que je reçois mes gains ?', a: 'Tes gains sont versés dans les 24-48h après validation de la mission par le demandeur. Tu peux suivre tes gains en temps réel dans l\'application.' },
+    { q: 'Puis-je choisir mes missions ?', a: 'Absolument ! Tu parcours les annonces disponibles près de chez toi et tu postules uniquement aux missions qui t\'intéressent.' },
+    { q: 'Que faire en cas de problème avec un demandeur ?', a: 'Notre équipe de support est disponible pour gérer tout litige. Tu peux nous contacter directement depuis l\'application ou via la page contact.' },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-green-500 to-emerald-500 py-16">
+      <section className="bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-white"
-          >
-            <span className="text-6xl mb-4 block">🦸</span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Devenir Helper</h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Rejoignez la communauté et aidez ceux qui en ont besoin
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center text-white">
+            <span className="text-7xl mb-6 block">🤝</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Devenir Helper</h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8">
+              Aide les personnes âgées de ton quartier, crée du lien et gagne de l'argent à ton rythme.
             </p>
+            <Link to="/telecharger" className="inline-flex items-center gap-2 bg-white text-emerald-700 font-bold px-8 py-4 rounded-xl hover:shadow-lg transition-all">
+              <span>📲</span> Télécharger l'application
+            </Link>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 pb-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Progress Steps */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            {[1, 2, 3].map((s) => (
-              <div key={s} className="flex items-center">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-                    step >= s ? 'bg-cyan-500 text-white' : 'bg-gray-200 text-gray-500'
-                  }`}
-                >
-                  {s}
-                </div>
-                {s < 3 && (
-                  <div className={`w-16 h-1 ${step > s ? 'bg-cyan-500' : 'bg-gray-200'}`} />
-                )}
-              </div>
+      {/* Types de missions */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Quelles missions peux-tu réaliser ?</h2>
+            <p className="text-gray-600 text-lg">Choisis les domaines qui correspondent à tes compétences et envies</p>
+          </motion.div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {typesMissions.map((type, i) => (
+              <motion.div key={type.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }}
+                className="flex items-center gap-2 bg-emerald-50 border border-emerald-100 px-5 py-3 rounded-full text-emerald-800 font-medium">
+                <span className="text-xl">{type.icon}</span>
+                {type.label}
+              </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <form className="bg-white rounded-3xl shadow-xl p-8">
-            {/* Step 1: Informations personnelles */}
-            {step === 1 && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="space-y-6"
-              >
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Informations personnelles</h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Prénom</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.prenom}
-                      onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Nom</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.nom}
-                      onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-                    />
-                  </div>
+      {/* Étapes */}
+      <section className="py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Comment ça marche ?</h2>
+            <p className="text-gray-600 text-lg">En 5 étapes simples, tu peux commencer à aider</p>
+          </motion.div>
+          <div className="space-y-4">
+            {etapes.map((etape, i) => (
+              <motion.div key={etape.num} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-6 bg-white rounded-2xl p-6 shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                  {etape.num}
                 </div>
+                <span className="text-3xl">{etape.icon}</span>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Téléphone</label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.telephone}
-                      onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Date de naissance</label>
-                    <input
-                      type="date"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.dateNaissance}
-                      onChange={(e) => setFormData({ ...formData, dateNaissance: e.target.value })}
-                    />
-                  </div>
+                  <h3 className="font-bold text-gray-900 text-lg">{etape.title}</h3>
+                  <p className="text-gray-600">{etape.desc}</p>
                 </div>
               </motion.div>
-            )}
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Step 2: Compétences */}
-            {step === 2 && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="space-y-6"
-              >
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Vos compétences</h2>
-                <p className="text-gray-600 mb-4">Sélectionnez les types de missions que vous souhaitez effectuer</p>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => toggleCategory(cat.id)}
-                      className={`p-4 rounded-xl border-2 text-center transition-all ${
-                        formData.categories.includes(cat.id)
-                          ? 'border-cyan-500 bg-cyan-50'
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <span className="text-2xl block mb-1">{cat.icon}</span>
-                      <span className="text-sm font-medium text-gray-700">{cat.label}</span>
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Présentez-vous en quelques mots</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    placeholder="Parlez de vous, de votre expérience..."
-                    value={formData.bio}
-                    onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  />
-                </div>
+      {/* Avantages */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Pourquoi devenir helper ?</h2>
+            <p className="text-gray-600 text-lg">Des avantages concrets pour toi</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {avantages.map((av, i) => (
+              <motion.div key={av.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
+                className="bg-gray-50 rounded-2xl p-6">
+                <span className="text-4xl mb-4 block">{av.icon}</span>
+                <h3 className="font-bold text-gray-900 mb-2">{av.title}</h3>
+                <p className="text-gray-600 text-sm">{av.desc}</p>
               </motion.div>
-            )}
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Step 3: Disponibilités */}
-            {step === 3 && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="space-y-6"
-              >
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Vos disponibilités</h2>
-                <p className="text-gray-600 mb-4">Indiquez quand vous êtes généralement disponible</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                  {disponibilites.map((dispo) => (
-                    <button
-                      key={dispo}
-                      type="button"
-                      onClick={() => toggleDispo(dispo)}
-                      className={`p-3 rounded-lg border text-sm transition-all ${
-                        formData.disponibilites.includes(dispo)
-                          ? 'border-cyan-500 bg-cyan-50 text-cyan-700'
-                          : 'border-gray-200 text-gray-600 hover:border-gray-300'
-                      }`}
-                    >
-                      {dispo}
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Adresse</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                    value={formData.adresse}
-                    onChange={(e) => setFormData({ ...formData, adresse: e.target.value })}
-                  />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Code postal</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.codePostal}
-                      onChange={(e) => setFormData({ ...formData, codePostal: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Ville</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                      value={formData.ville}
-                      onChange={(e) => setFormData({ ...formData, ville: e.target.value })}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Navigation Buttons */}
-            <div className="mt-8 flex justify-between">
-              {step > 1 && (
-                <button
-                  type="button"
-                  onClick={() => setStep(step - 1)}
-                  className="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-medium hover:bg-gray-200 transition"
-                >
-                  Retour
+      {/* FAQ */}
+      <section className="py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Questions fréquentes</h2>
+          </motion.div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+                className="bg-white rounded-2xl shadow-sm overflow-hidden">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left">
+                  <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
+                  <span className={`text-cyan-600 transition-transform duration-200 flex-shrink-0 ${openFaq === i ? 'rotate-180' : ''}`}>▼</span>
                 </button>
-              )}
-              {step < 3 ? (
-                <button
-                  type="button"
-                  onClick={() => setStep(step + 1)}
-                  className="ml-auto px-6 py-3 bg-cyan-500 text-white rounded-xl font-medium hover:bg-cyan-600 transition"
-                >
-                  Continuer
-                </button>
-              ) : (
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="ml-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white rounded-xl font-bold shadow-lg"
-                >
-                  Finaliser mon inscription
-                </motion.button>
-              )}
-            </div>
-          </form>
+                <AnimatePresence>
+                  {openFaq === i && (
+                    <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }} className="overflow-hidden">
+                      <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-r from-emerald-500 to-teal-500">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <span className="text-5xl mb-6 block">🚀</span>
+          <h2 className="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
+          <p className="text-white/90 text-lg mb-8">Télécharge l'application et rejoins des centaines de helpers actifs.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/telecharger" className="inline-flex items-center gap-2 bg-white text-emerald-700 font-bold px-8 py-4 rounded-xl hover:shadow-lg transition-all">
+              Télécharger l'app
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 border-2 border-white text-white font-bold px-8 py-4 rounded-xl hover:bg-white/10 transition-all">
+              Une question ?
+            </Link>
+          </div>
         </div>
       </section>
     </div>

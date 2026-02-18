@@ -37,37 +37,12 @@ const Header = () => {
     { icon: '⚽', title: 'Activités & Sport', path: '/services/activite' },
   ];
 
-  const infosMenu = {
-    presentation: {
-      title: 'Présentation de l\'entreprise',
-      description: 'Découvrez Act\'solidaires, l\'application d\'entraide intergénérationnelle.',
-      link: '/presentation',
-    },
-    demander: {
-      title: 'Demander de l\'aide',
-      links: [
-        { label: 'Créer une mission', path: '/creer-mission' },
-        { label: 'Mes missions', path: '/mes-missions' },
-        { label: 'FAQ demandeur', path: '/faq-demandeur' },
-      ],
-    },
-    helper: {
-      title: 'Devenir Helper',
-      links: [
-        { label: 'Inscription Helper', path: '/inscription-helper' },
-        { label: 'Missions (Liste & Carte)', path: '/missions' },
-        { label: 'Mes gains', path: '/mes-gains' },
-      ],
-    },
-    demandeur: {
-      title: 'Devenir Demandeur',
-      links: [
-        { label: 'Inscription Demandeur', path: '/inscription-demandeur' },
-        { label: 'Missions (Liste & Carte)', path: '/missions' },
-        { label: 'Mes gains', path: '/mes-gains' },
-      ],
-    },
-  };
+  const infosMenu = [
+    { icon: '🎯', title: 'Présentation', desc: "Découvrez Act'Solidaires et notre mission", path: '/presentation' },
+    { icon: '🙋', title: "Demander de l'aide", desc: 'Comment ça marche pour les demandeurs', path: '/faq-demandeur' },
+    { icon: '🤝', title: 'Devenir Helper', desc: "Tout savoir pour aider et gagner de l'argent", path: '/inscription-helper' },
+    { icon: '👤', title: 'Devenir Demandeur', desc: "Comment s'inscrire et trouver de l'aide", path: '/inscription-demandeur' },
+  ];
 
   const menuVariants = {
     closed: {
@@ -156,66 +131,22 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 grid grid-cols-2 gap-6"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-4"
                   >
-                    {/* Présentation */}
-                    <div className="col-span-2 bg-gradient-to-r from-cyan-50 to-emerald-50 rounded-xl p-4">
-                      <h4 className="font-bold text-gray-800 mb-2">{infosMenu.presentation.title}</h4>
-                      <p className="text-sm text-gray-600">{infosMenu.presentation.description}</p>
-                      <Link to={infosMenu.presentation.link} className="text-sm text-cyan-600 font-medium mt-2 inline-block hover:underline">
-                        En savoir plus →
-                      </Link>
-                    </div>
-
-                    {/* Demander de l'aide */}
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <span className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center text-lg">🙋</span>
-                        {infosMenu.demander.title}
-                      </h4>
-                      <ul className="space-y-2">
-                        {infosMenu.demander.links.map((link) => (
-                          <li key={link.path}>
-                            <Link to={link.path} className="text-sm text-gray-600 hover:text-cyan-600 transition-colors">
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Devenir Helper */}
-                    <div>
-                      <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <span className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">🤝</span>
-                        {infosMenu.helper.title}
-                      </h4>
-                      <ul className="space-y-2">
-                        {infosMenu.helper.links.map((link) => (
-                          <li key={link.path + link.label}>
-                            <Link to={link.path} className="text-sm text-gray-600 hover:text-cyan-600 transition-colors">
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Devenir Demandeur */}
-                    <div className="col-span-2 border-t pt-4">
-                      <h4 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <span className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">👤</span>
-                        {infosMenu.demandeur.title}
-                      </h4>
-                      <ul className="flex gap-6">
-                        {infosMenu.demandeur.links.map((link) => (
-                          <li key={link.path + link.label + 'demandeur'}>
-                            <Link to={link.path} className="text-sm text-gray-600 hover:text-cyan-600 transition-colors">
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="grid grid-cols-1 gap-1">
+                      {infosMenu.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                        >
+                          <span className="text-xl mt-0.5">{item.icon}</span>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-800 group-hover:text-cyan-600 transition-colors">{item.title}</p>
+                            <p className="text-xs text-gray-500">{item.desc}</p>
+                          </div>
+                        </Link>
+                      ))}
                     </div>
                   </motion.div>
                 )}
@@ -472,40 +403,13 @@ const Header = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden pl-4"
                       >
-                        <div className="py-2 space-y-3">
-                          <Link to="/presentation" className="block text-sm text-gray-500 hover:text-cyan-600" onClick={() => setIsMenuOpen(false)}>
-                            Présentation de l'entreprise
-                          </Link>
-                          <div>
-                            <span className="text-xs font-semibold text-gray-400 uppercase">Demander de l'aide</span>
-                            <div className="mt-1 space-y-1">
-                              {infosMenu.demander.links.map((link) => (
-                                <Link key={link.path} to={link.path} className="block text-sm text-gray-500 hover:text-cyan-600 py-1" onClick={() => setIsMenuOpen(false)}>
-                                  {link.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                          <div>
-                            <span className="text-xs font-semibold text-gray-400 uppercase">Devenir Helper</span>
-                            <div className="mt-1 space-y-1">
-                              {infosMenu.helper.links.map((link) => (
-                                <Link key={link.path + link.label} to={link.path} className="block text-sm text-gray-500 hover:text-cyan-600 py-1" onClick={() => setIsMenuOpen(false)}>
-                                  {link.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                          <div>
-                            <span className="text-xs font-semibold text-gray-400 uppercase">Devenir Demandeur</span>
-                            <div className="mt-1 space-y-1">
-                              {infosMenu.demandeur.links.map((link) => (
-                                <Link key={link.path + link.label + 'mob'} to={link.path} className="block text-sm text-gray-500 hover:text-cyan-600 py-1" onClick={() => setIsMenuOpen(false)}>
-                                  {link.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
+                        <div className="py-2 space-y-1">
+                          {infosMenu.map((item) => (
+                            <Link key={item.path} to={item.path} className="flex items-center gap-2 text-sm text-gray-500 hover:text-cyan-600 py-1" onClick={() => setIsMenuOpen(false)}>
+                              <span>{item.icon}</span>
+                              {item.title}
+                            </Link>
+                          ))}
                         </div>
                       </motion.div>
                     )}
