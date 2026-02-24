@@ -307,8 +307,22 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {/* Contact Button */}
+            {/* Contact Link */}
             <Link to="/contact">
+              <motion.span
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                CONTACT
+              </motion.span>
+            </Link>
+
+            {/* Telecharger Button */}
+            <Link to="/telecharger">
               <motion.span
                 className="bg-gradient-to-r from-cyan-500 to-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 inline-block"
                 whileHover={{ scale: 1.05 }}
@@ -317,7 +331,7 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                CONTACT
+                TÉLÉCHARGER
               </motion.span>
             </Link>
           </nav>
@@ -531,16 +545,29 @@ const Header = () => {
                   </AnimatePresence>
                 </motion.div>
 
-                {/* Contact Button Mobile */}
+                {/* Contact Mobile */}
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   <motion.span
-                    className="block py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-emerald-500 text-center mt-4"
+                    className="block py-3 px-4 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                    variants={itemVariants}
+                    custom={4}
+                    initial="closed"
+                    animate="open"
+                  >
+                    CONTACT
+                  </motion.span>
+                </Link>
+
+                {/* Telecharger Button Mobile */}
+                <Link to="/telecharger" onClick={() => setIsMenuOpen(false)}>
+                  <motion.span
+                    className="block py-3 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-emerald-500 text-center mt-2"
                     variants={itemVariants}
                     custom={5}
                     initial="closed"
                     animate="open"
                   >
-                    CONTACT
+                    TÉLÉCHARGER
                   </motion.span>
                 </Link>
               </div>
